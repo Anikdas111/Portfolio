@@ -3,116 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - AI Researcher | Bangladesh</title>
+    <title>Academic Portfolio | [Your Name]</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #0066cc;
-            --bg-color: #f8f9fa;
-            --text-color: #333;
-            --accent-color: #28a745;
-            --shadow: 0 4px 8px rgba(0,0,0,0.1);
+            --bg: #fdfdfc; /* Sophisticated off-white/paper color */
+            --text-primary: #1a1a1a;
+            --text-secondary: #525252;
+            --accent: #1e40af; /* Deep academic blue */
+            --border: #e5e5e0;
         }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-primary);
             line-height: 1.7;
-            color: var(--text-color);
-            background: var(--bg-color);
+            -webkit-font-smoothing: antialiased;
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
+
+        h1, h2, h3, .serif {
+            font-family: 'Crimson Pro', serif;
+            letter-spacing: -0.01em;
         }
-        .hero {
-            text-align: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 80px 20px;
-            margin: -40px -20px 40px -20px;
-            border-radius: 0 0 20px 20px;
-            box-shadow: var(--shadow);
+
+        /* Mobile Nav Toggle */
+        #mobile-menu {
+            display: none;
         }
-        h1 {
-            font-size: 3em;
-            margin: 0 0 10px;
-            font-weight: 300;
+        #mobile-menu.active {
+            display: flex;
         }
-        .subtitle {
-            font-size: 1.3em;
-            opacity: 0.95;
-            margin: 0 0 20px;
+
+        .nav-blur {
+            background: rgba(253, 253, 252, 0.9);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
-        h2 {
-            color: var(--primary-color);
-            font-size: 1.8em;
-            border-left: 4px solid var(--accent-color);
-            padding-left: 20px;
-            margin-top: 50px;
+
+        .pub-card {
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+            transition: transform 0.2s ease;
         }
-        ul {
-            list-style: none;
-            padding: 0;
+
+        @media (min-width: 768px) {
+            .pub-card:hover {
+                transform: translateX(8px);
+            }
         }
-        ul li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
         }
-        ul li:last-child { border-bottom: none; }
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
+
+        .bento-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 4px; /* Sharper, more academic corners */
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
         }
-        a:hover {
-            color: var(--accent-color);
+
+        /* Section dividers */
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #a3a3a3;
+            margin-bottom: 2rem;
         }
-        .interests {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            font-style: italic;
+        .section-label::after {
+            content: "";
+            height: 1px;
+            flex-grow: 1;
+            background-color: var(--border);
         }
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2em; }
-            .hero { padding: 60px 20px; margin: -20px -10px 30px; }
-            h2 { font-size: 1.5em; }
+
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            h1 { font-size: 2.5rem !important; }
+            .hero-layout { flex-direction: column-reverse !important; }
+            section { margin-bottom: 4rem !important; }
         }
     </style>
 </head>
 <body>
-    <div class="hero">
-        <h1>Your Name</h1>
-        <p class="subtitle">AI Chatbot Developer | ML Researcher | Dhaka, Bangladesh</p>
-    </div>
-    
-    <div class="container">
-        <h2>Research</h2>
-        <p>Developing AI chatbots for education, personal/relationship advice, and psychological support in Bengali. Creating novel ML datasets for first research publication targeting Springer/Elsevier/Nature.</p>
-        
-        <h2>Interests</h2>
-        <div class="interests">
-            AI, Machine Learning, NLP, Bengali Language Processing, EdTech, Psychology, Datasets for Research.
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-[var(--border)] nav-blur">
+        <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="font-bold tracking-tighter text-2xl serif">YN.</a>
+            
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex space-x-10 text-[11px] font-bold tracking-widest uppercase text-gray-500">
+                <a href="#about" class="hover:text-[var(--accent)] transition-colors">Biography</a>
+                <a href="#research" class="hover:text-[var(--accent)] transition-colors">Research</a>
+                <a href="#publications" class="hover:text-[var(--accent)] transition-colors">Publications</a>
+                <a href="#contact" class="hover:text-[var(--accent)] transition-colors">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden p-2 text-gray-600 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </div>
+
+        <!-- Mobile Full-screen Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-[var(--bg)] flex-col items-center justify-center space-y-8 text-2xl serif italic z-50">
+            <button id="close-btn" class="absolute top-5 right-6 text-3xl">&times;</button>
+            <a href="#about" class="mobile-link">Biography</a>
+            <a href="#research" class="mobile-link">Research</a>
+            <a href="#publications" class="mobile-link">Publications</a>
+            <a href="#contact" class="mobile-link">Contact</a>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6 pt-32 pb-24">
         
-        <h2>Projects</h2>
-        <ul>
-            <li>Bangladesh AI Chatbot MVP (Conversational, Educational, Advice)</li>
-            <li>New ML Datasets for Publication (Scopus-indexed journals)</li>
-            <li>Portfolio Website (This site!)</li>
-        </ul>
-        
-        <h2>Connect</h2>
-        <ul>
-            <li><a href="https://github.com/yourusername">GitHub</a></li>
-            <li><a href="https://linkedin.com/in/yourprofile">LinkedIn</a></li>
-            <li><a href="mailto:your@email.com">Email</a></li>
-            <li><a href="#">X (Twitter)</a></li>
-            <!-- Add more links -->
-        </ul>
-    </div>
+        <!-- Hero Section -->
+        <header id="about" class="mb-24">
+            <div class="hero-layout flex items-start justify-between gap-12 mb-12">
+                <div class="flex-1">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-[1.1]">Your Name</h1>
+                    <p class="text-xl md:text-2xl text-[var(--text-secondary)] font-light serif italic leading-relaxed max-w-2xl">
+                        Researcher in <span class="text-[var(--text-primary)] font-semibold not-italic">Computational Neuroscience</span> at MIT. Investigating the fundamental algorithms of the human mind.
+                    </p>
+                </div>
+                <div class="w-32 h-32 md:w-44 md:h-44 bg-gray-100 border border-[var(--border)] overflow-hidden rounded-sm grayscale hover:grayscale-0 transition-all duration-700">
+                    <!-- Replace with real image src -->
+                    <div class="w-full h-full flex items-center justify-center text-gray-300">Photo</div>
+                </div>
+            </div>
+            
+            <div class="max-w-2xl text-[var(--text-secondary)] text-lg">
+                <p class="mb-6">
+                    I bridge biological intelligence and artificial systems. My current work focuses on <strong>synaptic plasticity</strong> and how sparse representations enable lifelong learning in the brain.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#" class="inline-flex items-center gap-2 text-xs font-bold px-6 py-3 bg-black text-white rounded-sm hover:bg-gray-800 transition-all">
+                        Curriculum Vitae 
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-width="3"></path></svg>
+                    </a>
+                    <a href="https://scholar.google.com" class="inline-flex items-center gap-2 text-xs font-bold px-6 py-3 border border-[var(--border)] hover:bg-white transition-all">Google Scholar</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- News Bento Section -->
+        <section class="mb-24">
+            <div class="section-label">News & Updates</div>
+            <div class="bento-grid">
+                <div class="bento-card md:col-span-2 border-l-4 border-l-[var(--accent)]">
+                    <span class="text-[10px] font-bold text-[var(--accent)] tracking-widest uppercase mb-1 block">Latest Paper</span>
+                    <h4 class="font-bold mb-2">Structural Plasticity in Deep Networks</h4>
+                    <p class="text-sm text-gray-500">Accepted for a spotlight presentation at ICML 2026. This work introduces a new regularization technique based on dendritic pruning.</p>
+                </div>
+                <div class="bento-card">
+                    <span class="text-gray-400 text-[10px] font-bold uppercase tracking-widest block mb-1">Jan 2026</span>
+                    <p class="text-sm font-medium">Invited talk at the Max Planck Institute for Brain Research.</p>
+                </div>
+                <div class="bento-card">
+                    <span class="text-gray-400 text-[10px] font-bold uppercase tracking-widest block mb-1">Dec 2025</span>
+                    <p class="text-sm font-medium">Awarded the "Outstanding Graduate Researcher" medal.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research" class="mb-24">
+            <div class="section-label">Research Themes</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div>
+                    <h3 class="text-3xl font-bold mb-4 serif italic underline decoration-[var(--border)] underline-offset-8">01. Neural Latents</h3>
+                    <p class="text-[var(--text-secondary)]">How does the brain coordinate millions of neurons to produce singular actions? We use manifold learning to decode the hidden structure of motor cortex activity.</p>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold mb-4 serif italic underline decoration-[var(--border)] underline-offset-8">02. Bio-ML Fusion</h3>
+                    <p class="text-[var(--text-secondary)]">Implementing neuro-inspired local learning rules to solve the "catastrophic forgetting" problem in modern Large Language Models.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications -->
+        <section id="publications" class="mb-24">
+            <div class="section-label">Selected Papers</div>
+            <div class="space-y-4">
+                <article class="pub-card">
+                    <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-2">
+                        <h3 class="text-xl font-bold leading-tight max-w-2xl">A Mathematical Framework for Dendritic Computation in Cortical Circuits</h3>
+                        <span class="text-sm font-mono text-gray-400">2026</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-2">
+                        <span class="text-black font-semibold">Your Name</span>, Anderson, P., & Gupta, S.
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <span class="text-xs font-bold text-[var(--accent)] italic">Journal of Neuroscience</span>
+                        <div class="h-[1px] w-8 bg-gray-200"></div>
+                        <a href="#" class="text-[10px] font-bold uppercase tracking-tighter hover:underline">[PDF]</a>
+                        <a href="#" class="text-[10px] font-bold uppercase tracking-tighter hover:underline">[Bib]</a>
+                    </div>
+                </article>
+
+                <article class="pub-card">
+                    <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-2">
+                        <h3 class="text-xl font-bold leading-tight max-w-2xl">Robustness to Perturbation in Sparse Recurrent Networks</h3>
+                        <span class="text-sm font-mono text-gray-400">2025</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-2">
+                        Lee, H., <span class="text-black font-semibold">Your Name</span>, & Martinez, J.
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <span class="text-xs font-bold text-[var(--accent)] italic">NeurIPS Spotlight</span>
+                        <div class="h-[1px] w-8 bg-gray-200"></div>
+                        <a href="#" class="text-[10px] font-bold uppercase tracking-tighter hover:underline">[Paper]</a>
+                        <a href="#" class="text-[10px] font-bold uppercase tracking-tighter hover:underline">[Code]</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contact/Footer -->
+        <footer id="contact" class="pt-16 border-t border-[var(--border)]">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest mb-6">Contact</h4>
+                    <p class="text-lg serif italic mb-4">"Exploring the intersection of data and biology."</p>
+                    <p class="text-sm text-[var(--text-secondary)] leading-relaxed">
+                        Massachusetts Institute of Technology<br>
+                        77 Massachusetts Ave, Cambridge, MA<br>
+                        Email: <a href="mailto:name@mit.edu" class="text-black font-semibold underline decoration-[var(--accent)]">name@mit.edu</a>
+                    </p>
+                </div>
+                <div class="flex flex-col md:items-end md:justify-end">
+                    <div class="flex gap-8 mb-6 text-sm font-bold tracking-widest uppercase">
+                        <a href="#" class="hover:text-[var(--accent)]">Twitter</a>
+                        <a href="#" class="hover:text-[var(--accent)]">Github</a>
+                        <a href="#" class="hover:text-[var(--accent)]">Scholar</a>
+                    </div>
+                    <p class="text-[10px] text-gray-400 uppercase tracking-[0.2em] font-medium">© 2026 Your Name • Designed for readability</p>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        const toggleMenu = () => mobileMenu.classList.toggle('active');
+
+        menuBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        // Smooth scroll with offset for fixed nav
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const target = document.querySelector(targetId);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
