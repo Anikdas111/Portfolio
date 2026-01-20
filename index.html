@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | [Anik Das]</title>
+    <title>Anik Das</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -74,8 +74,18 @@
             margin-bottom: 2rem;
         }
 
+        /* Book Card Style */
+        .book-card {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 2rem;
+            padding: 2rem;
+            background: #fff;
+            border: 1px solid var(--border);
+        }
+
         @media (max-width: 640px) {
-            .cv-item { grid-template-columns: 1fr; gap: 0.5rem; }
+            .cv-item, .book-card { grid-template-columns: 1fr; gap: 1rem; }
             h1 { font-size: 3rem !important; }
         }
     </style>
@@ -87,13 +97,14 @@
         <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
             <a href="javascript:void(0)" onclick="navigateTo('home')" class="font-bold tracking-tighter text-2xl serif">AD.</a>
             
-            <div class="hidden md:flex space-x-10 text-[11px] font-bold tracking-widest uppercase text-gray-500">
+            <div class="hidden md:flex space-x-8 text-[11px] font-bold tracking-widest uppercase text-gray-500">
                 <a href="javascript:void(0)" onclick="navigateTo('home')" class="nav-link home-link hover:text-[var(--accent)] transition-all py-2">Home</a>
                 <a href="javascript:void(0)" onclick="navigateTo('projects')" class="nav-link projects-link hover:text-[var(--accent)] transition-all py-2">Projects</a>
-                <a href="javascript:void(0)" onclick="navigateTo('cv')" class="nav-link cv-link hover:text-[var(--accent)] transition-all py-2">CV</a>
+                <a href="javascript:void(0)" onclick="navigateTo('library')" class="nav-link library-link hover:text-[var(--accent)] transition-all py-2">Library</a>
+                <a href="javascript:void(0)" onclick="navigateTo('cv')" class="nav-link cv-link hover:text-[var(--accent)] transition-all py-2">About</a>
             </div>
 
-            <button id="menu-btn" class="md:hidden p-2 text-gray-600">
+            <button id="menu-btn" class="md:hidden p-2 text-gray-600 focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
@@ -104,50 +115,74 @@
         <button onclick="toggleMenu()" class="absolute top-5 right-6 text-3xl">&times;</button>
         <a href="javascript:void(0)" onclick="navigateTo('home'); toggleMenu()" class="hover:text-[var(--accent)]">Home</a>
         <a href="javascript:void(0)" onclick="navigateTo('projects'); toggleMenu()" class="hover:text-[var(--accent)]">Projects</a>
-        <a href="javascript:void(0)" onclick="navigateTo('cv'); toggleMenu()" class="hover:text-[var(--accent)]">CV</a>
+        <a href="javascript:void(0)" onclick="navigateTo('library'); toggleMenu()" class="hover:text-[var(--accent)]">Library</a>
+        <a href="javascript:void(0)" onclick="navigateTo('cv'); toggleMenu()" class="hover:text-[var(--accent)]">About</a>
     </div>
 
-    <main id="app-viewport" class="max-w-4xl mx-auto px-6 pt-32 pb-24">
-        <!-- Content will be injected here -->
+    <main id="app-viewport" class="max-w-4xl mx-auto px-6 pt-32 pb-24 min-h-[80vh]">
+        <!-- Content injected via JS -->
     </main>
 
-    <!-- Templates -->
+    <!-- Template: Home -->
     <template id="tpl-home">
         <div class="page-content">
             <header class="mb-24">
                 <div class="flex flex-col-reverse md:flex-row items-start justify-between gap-12 mb-12">
                     <div class="flex-1">
-                        <h1 class="text-6xl md:text-7xl font-bold mb-6 tracking-tight leading-[1.1]">Your Name</h1>
-                        <p class="text-xl md:text-2xl text-[var(--text-secondary)] font-light serif italic leading-relaxed">
+                        <h1 class="text-6xl md:text-7xl font-bold mb-6 tracking-tight leading-[1.1]">Anik Das</h1>
+                        <p class="text-xl md:text-2xl text-[var(--text-secondary)] font-light serif italic leading-relaxed max-w-2xl">
                             Statistician & <span class="text-[var(--text-primary)] font-semibold not-italic">Data Analyst</span>. Specializing in high-dimensional datasets and causal inference.
                         </p>
                     </div>
-                    <div class="w-32 h-32 md:w-44 md:h-44 bg-gray-100 border border-[var(--border)] rounded-sm grayscale"></div>
+                    <div class="w-32 h-32 md:w-44 md:h-44 bg-gray-100 border border-[var(--border)] rounded-sm grayscale relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, #000 1px, transparent 1px); background-size: 10px 10px;"></div>
+                        <div class="w-full h-full flex items-center justify-center text-gray-400 uppercase font-bold text-[10px] tracking-widest relative z-10 text-center p-2">Headshot</div>
+                    </div>
                 </div>
                 <div class="max-w-2xl text-[var(--text-secondary)] text-lg">
                     <p class="mb-6">I help organizations make sense of "noisy" data. By combining traditional frequentist statistics with modern Bayesian machine learning, I build robust systems for [Field].</p>
-                    <button onclick="navigateTo('projects')" class="px-8 py-3 bg-black text-white text-xs font-bold uppercase tracking-widest hover:bg-neutral-800 transition-all">Explore Projects &rarr;</button>
+                    <div class="flex gap-4">
+                        <button onclick="navigateTo('projects')" class="px-8 py-3 bg-black text-white text-xs font-bold uppercase tracking-widest hover:bg-neutral-800 transition-all">Explore Projects &rarr;</button>
+                        <button onclick="navigateTo('library')" class="px-8 py-3 border border-black text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">Reading Log</button>
+                    </div>
                 </div>
             </header>
 
+            <!-- Toolkit Section -->
             <section class="mb-24">
-                <div class="section-label">Latest Insights</div>
+                <div class="section-label">Toolkit & Focus</div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="p-6 border border-[var(--border)] bg-white">
-                        <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest block mb-2">New Paper</span>
-                        <h4 class="font-bold text-lg mb-2">Dynamic Modeling in Sparse Markets</h4>
-                        <p class="text-sm text-gray-500">How we reduced variance by 22% using a novel weighting algorithm.</p>
+                        <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest block mb-2">Technical proficiency</span>
+                        <h4 class="font-bold text-lg mb-2">Programming & Tools</h4>
+                        <p class="text-sm text-gray-500">Python (Pandas, Scikit-learn), R (Tidyverse, Stan), SQL, and Tableau.</p>
                     </div>
                     <div class="p-6 border border-[var(--border)] bg-white">
-                        <span class="text-[10px] font-bold text-green-600 uppercase tracking-widest block mb-2">Talk</span>
-                        <h4 class="font-bold text-lg mb-2">The Future of Causal Inference</h4>
-                        <p class="text-sm text-gray-500">Keynote at the 2025 Data Summit.</p>
+                        <span class="text-[10px] font-bold text-green-600 uppercase tracking-widest block mb-2">Core Competency</span>
+                        <h4 class="font-bold text-lg mb-2">Primary Expertise</h4>
+                        <p class="text-sm text-gray-500">Applying propensity matching and IV analysis to observational datasets.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Snapshot Section (No Music) -->
+            <section class="mb-24">
+                <div class="section-label">Snapshot</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 border border-[var(--border)] bg-white/50 space-y-2">
+                        <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-gray-400">Current Read</h4>
+                        <p class="text-sm serif italic">Thinking, Fast and Slow — Daniel Kahneman</p>
+                    </div>
+                    <div class="p-6 border border-[var(--border)] bg-white/50 space-y-2">
+                        <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-gray-400">Location</h4>
+                        <p class="text-sm serif italic">Sylhet, BD</p>
                     </div>
                 </div>
             </section>
         </div>
     </template>
 
+    <!-- Template: Projects -->
     <template id="tpl-projects">
         <div class="page-content">
             <h2 class="text-4xl font-bold serif italic mb-4 underline underline-offset-8 decoration-blue-100">Project Portfolio</h2>
@@ -159,22 +194,56 @@
                         <h3 class="text-2xl font-bold">01. Longitudinal Health Study Analysis</h3>
                         <span class="text-xs font-mono text-gray-400">R / Tidyverse / Stan</span>
                     </div>
-                    <p class="text-gray-600 mb-6">Cleaned and analyzed a dataset of 50k+ patients over 10 years to identify early markers of chronic inflammation. Used mixed-effects models to handle missingness and spatial autocorrelation.</p>
+                    <p class="text-gray-600 mb-6">Cleaned and analyzed a dataset of 50k+ patients over 10 years to identify early markers of chronic inflammation.</p>
                     <a href="#" class="text-xs font-bold uppercase tracking-widest text-[var(--accent)] hover:underline">View Case Study &rarr;</a>
-                </div>
-
-                <div class="group border-b border-[var(--border)] pb-12">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-2xl font-bold">02. Financial Market Volatility Dashboard</h3>
-                        <span class="text-xs font-mono text-gray-400">Python / Dash / SQL</span>
-                    </div>
-                    <p class="text-gray-600 mb-6">Built a real-time ETL pipeline that aggregates trade data and visualizes GARCH-modeled volatility forecasts for specific currency pairs.</p>
-                    <a href="#" class="text-xs font-bold uppercase tracking-widest text-[var(--accent)] hover:underline">Source Code (GitHub) &rarr;</a>
                 </div>
             </div>
         </div>
     </template>
 
+    <!-- Template: Library -->
+    <template id="tpl-library">
+        <div class="page-content">
+            <h2 class="text-4xl font-bold serif italic mb-4">The Library</h2>
+            <p class="text-[var(--text-secondary)] mb-12 max-w-xl">Reviews, learning points, and activities beyond the code.</p>
+
+            <div class="section-label">Currently Reading</div>
+            <div class="book-card mb-16 shadow-sm">
+                <div class="bg-gray-100 h-48 w-full border border-gray-200 flex items-center justify-center text-[10px] font-bold text-gray-400 uppercase tracking-widest text-center px-4">
+                    Book Cover Placeholder
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-1 italic serif">Thinking, Fast and Slow</h3>
+                    <p class="text-sm text-gray-400 font-bold uppercase tracking-widest mb-4">Daniel Kahneman</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase text-blue-600 block mb-1">The Review</span>
+                            <p class="text-sm text-gray-600 italic">"A foundational look at how cognitive biases shape our statistical intuition. It challenges the notion of the 'rational agent' in economic models."</p>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-bold uppercase text-blue-600 block mb-1">Key Learning Point</span>
+                            <p class="text-sm text-gray-600 font-medium leading-relaxed">System 1 vs System 2 thinking: Understanding how our fast, intuitive mind often overrides our logical, statistical mind.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-label">Other Activities</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="border-l-2 border-black pl-6 py-2">
+                    <h4 class="font-bold mb-1">Analog Photography</h4>
+                    <p class="text-xs text-gray-500">Documenting urban landscapes using 35mm film. It teaches me the value of careful observation.</p>
+                </div>
+                <div class="border-l-2 border-black pl-6 py-2">
+                    <h4 class="font-bold mb-1">Chess Strategy</h4>
+                    <p class="text-xs text-gray-500">Exploring pattern recognition and decision trees through competitive play.</p>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Template: CV -->
     <template id="tpl-cv">
         <div class="page-content">
             <div class="flex justify-between items-center mb-12">
@@ -184,36 +253,42 @@
 
             <div class="section-label">Education</div>
             <div class="cv-item">
-                <div class="text-sm font-mono text-gray-400">2020 &mdash; 2024</div>
+                <div class="text-sm font-mono text-gray-400">2025 &mdash; 2029</div>
                 <div>
-                    <h4 class="font-bold">PhD in Applied Statistics</h4>
-                    <p class="text-sm text-gray-600">Massachusetts Institute of Technology</p>
-                    <p class="text-xs italic text-gray-400 mt-1">Focus: Bayesian Hierarchical Modeling</p>
-                </div>
-            </div>
-
-            <div class="section-label mt-16">Experience</div>
-            <div class="cv-item">
-                <div class="text-sm font-mono text-gray-400">2024 &mdash; Pres.</div>
-                <div>
-                    <h4 class="font-bold">Lead Data Analyst</h4>
-                    <p class="text-sm text-gray-600">Advanced Research Lab</p>
-                    <ul class="text-xs text-gray-500 mt-2 list-disc list-inside space-y-1">
-                        <li>Directed a team of 4 analysts on large-scale geospatial projects.</li>
-                        <li>Reduced data ingestion latency by 40% using optimized SQL queries.</li>
-                    </ul>
+                    <h4 class="font-bold">BSc in Computer Science and Engineering</h4>
+                    <p class="text-sm text-gray-600">Leading University</p>
                 </div>
             </div>
         </div>
     </template>
 
-    <footer class="max-w-4xl mx-auto px-6 pt-16 border-t border-[var(--border)]">
-        <div class="flex flex-col md:flex-row justify-between gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
-            <div>© 2026 Your Name</div>
-            <div class="flex gap-6">
-                <a href="#" class="hover:text-[var(--accent)]">Twitter</a>
-                <a href="#" class="hover:text-[var(--accent)]">GitHub</a>
-                <a href="#" class="hover:text-[var(--accent)]">LinkedIn</a>
+    <!-- Shared Contact Footer -->
+    <footer class="max-w-4xl mx-auto px-6 py-24 border-t border-[var(--border)] bg-white/30">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div>
+                <h4 class="text-sm font-bold uppercase tracking-widest mb-8 text-gray-400">Contact & Inquiry</h4>
+                <p class="text-2xl serif italic mb-6 leading-snug">"In God we trust; all others must bring data."</p>
+                <div class="space-y-4 text-sm text-[var(--text-secondary)]">
+                    <p>
+                        <span class="block text-[10px] font-bold uppercase tracking-widest text-gray-300 mb-1">Affiliation</span>
+                        Massachusetts Institute of Technology<br>
+                        77 Massachusetts Ave, Cambridge, MA
+                    </p>
+                    <p>
+                        <span class="block text-[10px] font-bold uppercase tracking-widest text-gray-300 mb-1">Email</span>
+                        <a href="mailto:name@mit.edu" class="text-black font-semibold underline decoration-[var(--accent)] decoration-2 underline-offset-4 hover:text-[var(--accent)] transition-colors">name@mit.edu</a>
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col md:items-end justify-end space-y-12">
+                <div class="flex flex-wrap gap-x-10 gap-y-4 text-[11px] font-bold tracking-[0.2em] uppercase">
+                    <a href="#" class="hover:text-[var(--accent)] transition-all">Twitter</a>
+                    <a href="#" class="hover:text-[var(--accent)] transition-all">GitHub</a>
+                    <a href="#" class="hover:text-[var(--accent)] transition-all">LinkedIn</a>
+                </div>
+                <div class="text-right">
+                    <p class="text-[10px] text-gray-400 uppercase tracking-[0.3em] font-medium mb-1">© 2026 Your Name</p>
+                </div>
             </div>
         </div>
     </footer>
@@ -223,28 +298,19 @@
         const mobileMenu = document.getElementById('mobile-menu');
 
         function navigateTo(pageId) {
-            // Update URL hash (simulated routing)
             window.location.hash = pageId;
-            
-            // Clear viewport
             viewport.innerHTML = '';
-            
-            // Get template
             const template = document.getElementById(`tpl-${pageId}`);
             if (template) {
                 const clone = template.content.cloneNode(true);
                 viewport.appendChild(clone);
             }
-
-            // Update Nav Styles
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active');
                 if (link.classList.contains(`${pageId}-link`)) {
                     link.classList.add('active');
                 }
             });
-
-            // Scroll to top
             window.scrollTo(0, 0);
         }
 
@@ -255,13 +321,11 @@
 
         document.getElementById('menu-btn').addEventListener('click', toggleMenu);
 
-        // Initial Load
         window.onload = () => {
             const hash = window.location.hash.replace('#', '') || 'home';
             navigateTo(hash);
         };
 
-        // Handle browser back/forward
         window.onpopstate = () => {
             const hash = window.location.hash.replace('#', '') || 'home';
             navigateTo(hash);
@@ -269,4 +333,3 @@
     </script>
 </body>
 </html>
-
