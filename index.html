@@ -6,17 +6,21 @@
   <title>Anik – Data Science & Research</title>
 
   <style>
-    body {
-      font-family: -apple-system, BlinkMacOSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.65;
-      color: #222;
-      background: #fff;
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.65;
+      color: #1f2937;
+      background: #ffffff;
     }
 
     a {
-      color: #0066cc;
+      color: #2563eb;
       text-decoration: none;
     }
     a:hover {
@@ -24,122 +28,154 @@
     }
 
     .container {
-      max-width: 960px;
+      max-width: 980px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 1.25rem;
     }
 
+    /* Header */
     header {
-      background: #f8f9fa;
-      border-bottom: 1px solid #ddd;
-      padding: 40px 0 30px;
+      background: linear-gradient(to right, #1e3a8a, #3b82f6);
+      color: white;
       text-align: center;
+      padding: 5rem 1rem 3.5rem;
     }
     header h1 {
-      margin: 0;
-      font-size: 2.6rem;
-      font-weight: 500;
-      color: #1a1a1a;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      margin-bottom: 0.5rem;
     }
     header .subtitle {
-      font-size: 1.25rem;
-      color: #555;
-      margin: 8px 0 0;
+      font-size: clamp(1.1rem, 4vw, 1.35rem);
+      opacity: 0.9;
     }
 
+    /* Navigation */
     nav {
-      background: #fff;
-      border-bottom: 1px solid #eee;
+      background: #111827;
+      color: white;
       position: sticky;
       top: 0;
       z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     }
-    nav .container {
+    .nav-container {
       display: flex;
-      justify-content: center;
-      padding: 14px 20px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.25rem;
     }
-    nav a {
-      margin: 0 24px;
-      font-size: 1.05rem;
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+    }
+    .nav-links a {
+      color: #d1d5db;
       font-weight: 500;
-      color: #333;
+      transition: color 0.2s;
     }
-    nav a:hover {
-      color: #0066cc;
+    .nav-links a:hover {
+      color: white;
     }
 
+    /* Mobile menu toggle */
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+    }
+
+    /* Main content */
     main {
-      padding: 50px 0 80px;
+      padding: 3.5rem 0 5rem;
     }
     section {
-      margin-bottom: 60px;
+      margin-bottom: 4.5rem;
     }
     h2 {
-      font-size: 1.85rem;
-      font-weight: 500;
-      color: #1a1a1a;
-      margin: 0 0 1.2em;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 0.4em;
+      font-size: 2.1rem;
+      margin-bottom: 1.4rem;
+      color: #111827;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 0.6rem;
     }
 
-    .people-grid,
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 28px;
-      margin-top: 1.5em;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1.5rem;
     }
 
-    .person,
     .project {
-      background: #fafafa;
-      padding: 20px;
-      border: 1px solid #eee;
-      border-radius: 4px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.6rem;
+      transition: transform 0.15s, box-shadow 0.15s;
     }
-    .person img {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 12px;
+    .project:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
     }
-    .person h3,
     .project h3 {
-      margin: 0 0 0.6em;
-      font-size: 1.25rem;
+      margin-bottom: 0.8rem;
+      color: #1d4ed8;
     }
-    .person .role,
-    .project .role {
-      color: #555;
+    .project .meta {
+      color: #6b7280;
       font-size: 0.95rem;
+      margin-bottom: 0.9rem;
     }
 
-    ul.publications {
-      list-style: none;
-      padding: 0;
-    }
-    ul.publications li {
-      margin: 1em 0;
-      line-height: 1.5;
-    }
-
+    /* Footer */
     footer {
-      background: #f8f9fa;
-      border-top: 1px solid #ddd;
-      padding: 40px 0;
+      background: #111827;
+      color: #9ca3af;
       text-align: center;
-      color: #555;
-      font-size: 0.95rem;
+      padding: 3rem 1rem;
+      margin-top: 3rem;
+    }
+    footer a {
+      color: #93c5fd;
     }
 
+    /* Mobile adjustments */
     @media (max-width: 768px) {
-      header h1 { font-size: 2.2rem; }
-      nav a { margin: 0 16px; font-size: 1rem; }
-      .people-grid,
-      .projects-grid { grid-template-columns: 1fr; }
+      header {
+        padding: 4rem 1rem 3rem;
+      }
+
+      .nav-container {
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        gap: 1.2rem;
+        padding: 1.5rem 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h2 {
+        font-size: 1.75rem;
+      }
     }
   </style>
 </head>
@@ -153,12 +189,15 @@
   </header>
 
   <nav>
-    <div class="container">
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#projects">Projects</a>
-      <a href="#teaching">Teaching</a>
-      <a href="#contact">Contact</a>
+    <div class="container nav-container">
+      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
   </nav>
 
@@ -167,72 +206,47 @@
     <section id="about">
       <h2>About</h2>
       <p>
-        I am a data science enthusiast and practitioner based in Dhaka, Bangladesh.
-        My interests include machine learning, statistical modeling, data visualization,
-        and applying data-driven approaches to solve real-world problems.
+        I am a data science practitioner based in Dhaka, Bangladesh.
+        I enjoy building practical machine learning solutions, creating clean data pipelines,
+        and turning complex datasets into actionable insights.
       </p>
       <p>
-        Currently exploring topics in predictive modeling, natural language processing,
-        time-series analysis and open-source tooling.
+        Current focus areas: predictive modeling, time-series analysis,
+        NLP for low-resource languages (including Bengali), and reproducible data science.
       </p>
-    </section>
-
-    <section id="research">
-      <h2>Research Interests</h2>
-      <ul>
-        <li>Applied machine learning and model interpretability</li>
-        <li>Time series forecasting and anomaly detection</li>
-        <li>Data quality and reproducible analysis</li>
-        <li>Statistical methods for high-dimensional data</li>
-        <li>Python / R tooling for data science workflows</li>
-      </ul>
     </section>
 
     <section id="projects">
       <h2>Selected Projects</h2>
       <div class="projects-grid">
         <div class="project">
-          <h3>Project Alpha</h3>
-          <p class="role">Personal / 2025</p>
+          <h3>Project Alpha – Sales Forecasting</h3>
+          <div class="meta">Personal Project • 2025</div>
           <p>
-            Built an end-to-end forecasting pipeline using Prophet + XGBoost.
-            Achieved 18% MAPE improvement over baseline on real sales data.
+            End-to-end forecasting pipeline using Prophet + XGBoost.
+            Improved MAPE by 18% on real retail data.
           </p>
-          <p><a href="#">GitHub →</a></p>
+          <p>
+            <a href="projects/project-alpha.html">View Details →</a> •
+            <a href="https://github.com/yourusername/project-alpha">GitHub</a>
+          </p>
         </div>
 
         <div class="project">
-          <h3>NLP Sentiment Dashboard</h3>
-          <p class="role">Personal / 2024</p>
+          <h3>Bengali Sentiment Dashboard</h3>
+          <div class="meta">Personal Project • 2024</div>
           <p>
-            Real-time sentiment analysis dashboard for Bengali & English text
-            using fine-tuned transformer models.
+            Real-time sentiment analysis web app for Bengali & English text
+            using fine-tuned transformers.
           </p>
-          <p><a href="#">Demo →</a>  <a href="#">GitHub →</a></p>
+          <p>
+            <a href="projects/bengali-sentiment.html">View Details →</a> •
+            <a href="https://github.com/yourusername/bengali-sentiment">GitHub</a>
+          </p>
         </div>
 
-        <div class="project">
-          <h3>Customer Churn Model</h3>
-          <p class="role">Freelance / 2024</p>
-          <p>
-            Developed and deployed churn prediction model (LightGBM) that reduced
-            false negatives by 22% for telecom client.
-          </p>
-          <p><a href="#">Report →</a></p>
-        </div>
+        <!-- Add more project cards here -->
       </div>
-    </section>
-
-    <section id="teaching">
-      <h2>Teaching & Resources</h2>
-      <p>
-        I occasionally create tutorials and short guides. Some recent materials:
-      </p>
-      <ul>
-        <li><a href="#">Introduction to Pandas for Data Wrangling (2025)</a></li>
-        <li><a href="#">Quickstart Guide to XGBoost & Hyperparameter Tuning</a></li>
-        <li><a href="#">Exploratory Data Analysis Checklist (Bengali + English)</a></li>
-      </ul>
     </section>
 
     <section id="contact">
@@ -240,8 +254,7 @@
       <p>
         Email: <a href="mailto:yourname@example.com">yourname@example.com</a><br>
         GitHub: <a href="https://github.com/yourusername">github.com/yourusername</a><br>
-        LinkedIn: <a href="https://linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a><br>
-        X / Twitter: <a href="https://x.com/yourhandle">@yourhandle</a>
+        LinkedIn: <a href="https://linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a>
       </p>
     </section>
 
@@ -249,9 +262,16 @@
 
   <footer>
     <div class="container">
-      <p>© 2026 Anik – All content licensed under CC BY-NC-SA 4.0 unless otherwise noted.</p>
+      <p>© 2026 Anik • Built with simplicity and care</p>
     </div>
   </footer>
+
+  <!-- Mobile menu toggle script -->
+  <script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('active');
+    });
+  </script>
 
 </body>
 </html>
