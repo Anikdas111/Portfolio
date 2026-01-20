@@ -3,41 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - AI Researcher</title>
+    <title>Your Name - AI Researcher | Bangladesh</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #333; }
-        h1 { font-size: 2.5em; margin-bottom: 0; }
-        h2 { color: #000; border-bottom: 2px solid #ccc; padding-bottom: 10px; }
-        ul { list-style-type: none; padding: 0; }
-        a { color: #0066cc; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .interests { font-style: italic; }
-        @media (max-width: 600px) { body { padding: 10px; } h1 { font-size: 2em; } }
+        :root {
+            --primary-color: #0066cc;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --accent-color: #28a745;
+            --shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            color: var(--text-color);
+            background: var(--bg-color);
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .hero {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            margin: -40px -20px 40px -20px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: var(--shadow);
+        }
+        h1 {
+            font-size: 3em;
+            margin: 0 0 10px;
+            font-weight: 300;
+        }
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin: 0 0 20px;
+        }
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8em;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 20px;
+            margin-top: 50px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        ul li:last-child { border-bottom: none; }
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: var(--accent-color);
+        }
+        .interests {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            font-style: italic;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2em; }
+            .hero { padding: 60px 20px; margin: -20px -10px 30px; }
+            h2 { font-size: 1.5em; }
+        }
     </style>
 </head>
 <body>
-    <h1>Your Name</h1>
+    <div class="hero">
+        <h1>Your Name</h1>
+        <p class="subtitle">AI Chatbot Developer | ML Researcher | Dhaka, Bangladesh</p>
+    </div>
     
-    <p>AI Chatbot Developer | ML Researcher | Bangladesh</p>
-    
-    <h2>Research</h2>
-    <p>Working on AI chatbots for education, personal advice, and psychological support in Bengali. First ML research on novel datasets for publication in Springer/Elsevier.</p>
-    
-    <h2>Interests</h2>
-    <p class="interests">AI, machine learning, NLP, Bengali language processing, education tech, psychology.</p>
-    
-    <h2>Projects</h2>
-    <ul>
-        <li>AI Chatbot MVP for Bangladesh</li>
-        <li>New ML datasets for research publication</li>
-    </ul>
-    
-    <h2>Connect</h2>
-    <ul>
-        <li><a href="https://x.com/yourhandle">X (Twitter)</a></li>
-        <li><a href="https://linkedin.com/in/yourprofile">LinkedIn</a></li>
-        <li><a href="mailto:your@email.com">Email</a></li>
-        <!-- Add GitHub, YouTube, etc. -->
-    </ul>
+    <div class="container">
+        <h2>Research</h2>
+        <p>Developing AI chatbots for education, personal/relationship advice, and psychological support in Bengali. Creating novel ML datasets for first research publication targeting Springer/Elsevier/Nature.</p>
+        
+        <h2>Interests</h2>
+        <div class="interests">
+            AI, Machine Learning, NLP, Bengali Language Processing, EdTech, Psychology, Datasets for Research.
+        </div>
+        
+        <h2>Projects</h2>
+        <ul>
+            <li>Bangladesh AI Chatbot MVP (Conversational, Educational, Advice)</li>
+            <li>New ML Datasets for Publication (Scopus-indexed journals)</li>
+            <li>Portfolio Website (This site!)</li>
+        </ul>
+        
+        <h2>Connect</h2>
+        <ul>
+            <li><a href="https://github.com/yourusername">GitHub</a></li>
+            <li><a href="https://linkedin.com/in/yourprofile">LinkedIn</a></li>
+            <li><a href="mailto:your@email.com">Email</a></li>
+            <li><a href="#">X (Twitter)</a></li>
+            <!-- Add more links -->
+        </ul>
+    </div>
 </body>
 </html>
