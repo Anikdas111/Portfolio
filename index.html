@@ -78,9 +78,63 @@
             .cv-item { grid-template-columns: 1fr; gap: 1rem; }
             h1 { font-size: 3rem !important; }
         }
+
+        /* Case study specific styling */
+        .prose p { margin-bottom: 1.5rem; color: var(--text-secondary); }
+        .prose h2 { font-size: 1.75rem; font-weight: 700; color: var(--text-primary); margin-top: 3rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        .prose h4 { font-weight: 700; color: var(--text-primary); margin-top: 2rem; margin-bottom: 0.5rem; }
+        .prose ul { list-style-type: none; padding: 0; margin-bottom: 2rem; }
+        .prose li { position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; color: var(--text-secondary); }
+        .prose li::before { content: "—"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+        
+        .highlight-box {
+            background: #f8f8f7;
+            padding: 2rem;
+            border-left: 4px solid var(--text-primary);
+            margin: 3rem 0;
+            font-style: italic;
+        }
+        .case-image {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            margin: 2rem 0;
+            background: white;
+            padding: 10px;
+        }
+
+        /* Lightbox Styles */
+        #lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+            padding: 20px;
+        }
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-radius: 4px;
+            animation: zoomIn 0.3s ease-out;
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Enlarged View">
+        <button class="absolute top-10 right-10 text-white text-4xl">&times;</button>
+    </div>
 
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 border-b border-[var(--border)] nav-blur">
@@ -158,7 +212,7 @@
                 </div>
             </section>
 
-            <!-- Snapshot Section (No Music) -->
+            <!-- Snapshot Section -->
             <section class="mb-24">
                 <div class="section-label">Snapshot</div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -182,28 +236,123 @@
             <p class="text-[var(--text-secondary)] mb-12 max-w-xl">A selection of my quantitative analysis work, ranging from academic papers to interactive dashboards.</p>
             
             <div class="space-y-16">
-                <!-- Harvard-style Project Item -->
+                <!-- Project Item -->
                 <div class="flex flex-col sm:flex-row gap-8 items-start mb-12 pb-12 border-b border-[var(--border)]">
                     <div class="w-32 h-44 border border-[var(--border)] flex-shrink-0 overflow-hidden bg-gray-50">
-                        <div class="w-full h-full flex items-center justify-center text-[10px] font-bold text-gray-300 uppercase tracking-widest">Project 01</div>
+                        <img src="https://raw.githubusercontent.com/Anikdas111/Portfolio/main/Picture2.png?raw=true" class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all cursor-zoom-in" alt="Churn Analysis" onclick="openLightbox(this.src)">
                     </div>
                     <div class="max-w-xl">
                         <h3 class="font-bold text-xl mb-1 serif">Customer Churn Analysis</h3>
-                        <p class="text-sm text-gray-500 mb-3 font-medium">Excel / Python / Statistical Modeling</p>
+                        <p class="text-sm text-gray-500 mb-3 font-medium">Excel / Data Analysis / Business Insights</p>
                         <p class="text-sm leading-relaxed text-gray-600 mb-4">
-                            A comprehensive cleaning and analysis of a company's customer dataset. Applied logistic regression and decision tree models to identify key drivers of attrition.
+                            A comprehensive cleaning and analysis of ~50,000 customer records to identify early churn signals and improve retention strategies.
                         </p>
                         <div class="text-xs font-bold uppercase tracking-widest">
-                            <a href="churn-analysis.html" class="underline decoration-gray-300 hover:decoration-black mr-4">Full Case Study</a>
-                            <a href="https://github.com/Anikdas111/Customer-churn-analysis" class="underline decoration-gray-300 hover:decoration-black mr-4">View Repository</a>
-                            <a href="View Repository" target="_blank" rel="noopener">
-                              View Repository
-                            </a>
-
+                            <a href="javascript:void(0)" onclick="navigateTo('churn-case-study')" class="underline decoration-gray-300 hover:decoration-black mr-4 cursor-pointer">Full Case Study</a>
+                            <a href="https://github.com/Anikdas111/Customer-churn-analysis" target="_blank" rel="noopener" class="underline decoration-gray-300 hover:decoration-black mr-4">View Repository</a>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </template>
+
+    <!-- Template: Full Case Study -->
+    <template id="tpl-churn-case-study">
+        <div class="page-content">
+            <button onclick="navigateTo('projects')" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-black mb-8 transition-colors flex items-center gap-2">
+               &larr; Back to Projects
+            </button>
+            
+            <header class="mb-12">
+                <h1 class="text-5xl font-bold serif mb-4 leading-tight">Customer Churn Analysis</h1>
+                <p class="text-sm font-bold uppercase tracking-[0.2em] text-gray-400">Excel • Data Analysis • Business Insights</p>
+            </header>
+
+            <article class="prose max-w-2xl">
+                <h2>Executive Summary</h2>
+                <p>
+                This project analyzes customer churn for a subscription-based business using exploratory data analysis.
+                The objective was to identify <strong>early churn signals</strong> and provide
+                <strong>actionable recommendations</strong> to improve customer retention.
+                </p>
+                <ul>
+                    <li><strong>Dataset:</strong> ~50,000 customer records</li>
+                    <li><strong>Main finding:</strong> Early-tenure customers account for the majority of churn</li>
+                    <li><strong>Business value:</strong> Enables targeted onboarding and retention strategies</li>
+                </ul>
+
+                <h2>Business Context</h2>
+                <p>
+                Customer churn is a critical challenge for subscription-based businesses, as acquiring new customers
+                is significantly more expensive than retaining existing ones.
+                This analysis simulates a real-world business scenario where understanding
+                <strong>why customers leave</strong> is essential for sustainable growth.
+                </p>
+
+                <h2>Business Questions</h2>
+                <ul>
+                    <li>Which customer segments exhibit the highest churn rates?</li>
+                    <li>How does customer tenure impact churn probability?</li>
+                    <li>Are early-stage customers more likely to churn?</li>
+                    <li>Which behavioral factors are most associated with churn?</li>
+                </ul>
+
+                <h2>Key Insights</h2>
+                <ul>
+                    <li>
+                        Customers with <strong>1–12 months tenure accounted for approximately 58% of total churn</strong>,
+                        indicating high risk during early onboarding.
+                    </li>
+                    <li>
+                        Customers with tenure greater than <strong>24 months showed churn rates below 15%</strong>,
+                        suggesting strong long-term stability.
+                    </li>
+                    <li>
+                        Over <strong>60% of churn occurred before customers fully adopted core services</strong>.
+                    </li>
+                </ul>
+
+                <div class="highlight-box">
+                    <strong>Key takeaway:</strong> Early customer experience is the most critical determinant of churn.
+                </div>
+
+                <h2>Visual Evidence</h2>
+                
+                <div class="my-10">
+                    <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2 underline">Churn rate by support interactions</p>
+                    <img
+                        src="https://raw.githubusercontent.com/Anikdas111/Portfolio/main/Picture1.png?raw=true"
+                        alt="Churn rate by support interactions"
+                        class="case-image cursor-zoom-in"
+                        onclick="openLightbox(this.src)"
+                    >
+                </div>
+
+                <div class="my-10">
+                    <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2 underline">Churn rate by tenure</p>
+                    <img
+                        src="https://raw.githubusercontent.com/Anikdas111/Portfolio/main/Picture2.png?raw=true"
+                        alt="Churn rate by tenure"
+                        class="case-image cursor-zoom-in"
+                        onclick="openLightbox(this.src)"
+                    >
+                </div>
+
+                <h2>Business Recommendations</h2>
+                <ul>
+                    <li>Strengthen onboarding programs during the first 12 months</li>
+                    <li>Track early engagement metrics to flag at-risk customers</li>
+                    <li>Deploy targeted retention campaigns for new users</li>
+                </ul>
+
+                <h2>Tools Used</h2>
+                <ul class="flex flex-wrap gap-4 list-none p-0">
+                    <li class="bg-gray-100 px-3 py-1 text-xs font-bold rounded">Microsoft Excel</li>
+                    <li class="bg-gray-100 px-3 py-1 text-xs font-bold rounded">GitHub</li>
+                    <li class="bg-gray-100 px-3 py-1 text-xs font-bold rounded">HTML & CSS</li>
+                </ul>
+            </article>
         </div>
     </template>
 
@@ -214,25 +363,17 @@
             <p class="text-[var(--text-secondary)] mb-12 max-w-xl">Reviews, learning points, and activities beyond the code.</p>
 
             <div class="section-label">Selected Reading</div>
-            
-            <!-- Harvard-style Book Item -->
             <div class="flex flex-col sm:flex-row gap-8 items-start mb-16">
-                <!-- Book cover -->
-                <div class="w-32 h-44 border border-[var(--border)] flex-shrink-0 overflow-hidden bg-white shadow-sm transition-transform hover:-translate-y-1">
-                    <img
-                        src="https://raw.githubusercontent.com/Anikdas111/Portfolio/main/Gemini_Generated_Image_627iki627iki627i.png"
-                        alt="Emotional Intelligence book cover"
-                        class="w-full h-full object-cover"
-                    />
+                <!-- Book Cover Container - Removed the text overlay -->
+                <div class="w-32 h-44 border border-[var(--border)] flex-shrink-0 overflow-hidden bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg group relative cursor-zoom-in" onclick="openLightbox('https://raw.githubusercontent.com/Anikdas111/Portfolio/main/Gemini_Generated_Image_627iki627iki627i.png')">
+                    <img src="https://raw.githubusercontent.com/Anikdas111/Portfolio/main/Gemini_Generated_Image_627iki627iki627i.png" alt="Emotional Intelligence" class="w-full h-full object-cover"/>
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors"></div>
                 </div>
-
-                <!-- Text content -->
+                
                 <div class="max-w-xl">
                     <h3 class="font-bold text-xl mb-1 serif">Emotional Intelligence</h3>
                     <p class="text-sm text-gray-500 mb-3 font-medium uppercase tracking-wider">Daniel Goleman</p>
-                    <p class="text-sm leading-relaxed text-gray-600 mb-4 italic">
-                        "An essential read that argues IQ isn't the sole predictor of success. Goleman explores how self-awareness, empathy, and social skills are often more critical for leadership and personal fulfillment."
-                    </p>
+                    <p class="text-sm leading-relaxed text-gray-600 mb-4 italic">"An essential read that argues IQ isn't the sole predictor of success. Goleman explores how self-awareness, empathy, and social skills are often more critical for leadership and personal fulfillment."</p>
                     <p class="text-sm leading-relaxed text-gray-600 mb-4">
                         <strong class="text-[10px] font-bold uppercase text-gray-400 block mb-1">Key Learning</strong>
                         The 'Amygdala Hijack': Learning how our emotional brain can override our rational brain and how to manage those impulses through mindfulness.
@@ -276,7 +417,6 @@
         </div>
     </template>
 
-    <!-- Shared Contact Footer -->
     <footer class="max-w-4xl mx-auto px-6 py-24 border-t border-[var(--border)] bg-white/30">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
             <div>
@@ -310,6 +450,8 @@
     <script>
         const viewport = document.getElementById('app-viewport');
         const mobileMenu = document.getElementById('mobile-menu');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
 
         function navigateTo(pageId) {
             viewport.innerHTML = '';
@@ -334,7 +476,23 @@
             mobileMenu.classList.toggle('flex');
         }
 
+        function openLightbox(src) {
+            lightboxImg.src = src;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
         document.getElementById('menu-btn').addEventListener('click', toggleMenu);
+
+        // Escape key to close lightbox
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
 
         window.onload = () => {
             navigateTo('home');
@@ -342,5 +500,3 @@
     </script>
 </body>
 </html>
-
-
