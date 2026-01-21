@@ -418,69 +418,78 @@
 
     <!-- Template: CV -->
     <template id="tpl-cv">
-        <div class="page-content">
-            <div class="flex justify-between items-center mb-12">
-                <h2 class="text-4xl font-bold serif italic">Curriculum Vitae</h2>
-                <a href="#" class="text-[10px] font-bold uppercase border border-black px-4 py-2 hover:bg-black hover:text-white transition-all">Download PDF</a>
-            </div>
+  <div class="page-content">
 
-            <div class="section-label">Education</div>
-            <div class="cv-item">
-                <div class="text-sm font-mono text-gray-400">2025 &mdash; 2029</div>
-                <div>
-                    <h4 class="font-bold">BSc in Computer Science and Engineering</h4>
-                    <p class="text-sm text-gray-600">Leading University</p>
-                </div>
-            </div>
-        </div>
-        <div class="section-label mt-20">Certifications</div>
-
-        <div class="relative max-w-xl">
-            <!-- Slider -->
-            <div id="cert-slider" class="overflow-hidden border border-[var(--border)] bg-white">
-                <div id="cert-track" class="flex transition-transform duration-500 ease-out">
-
-                    <!-- Certificate 1 -->
-                    <div class="min-w-full p-6">
-                        <h4 class="font-bold serif mb-2">Machine Learning Specialization</h4>
-                        <p class="text-xs uppercase tracking-widest text-gray-400 mb-4">Coursera · Stanford University · DeepLearning.AI</p>
-                        <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/3QRIV8JSOJE5" target="_blank"
-                           class="text-xs font-bold uppercase underline decoration-gray-300 hover:decoration-black">
-                           View Certificate →
-                        </a>
-                    </div>
-
-                    <!-- Certificate 2 -->
-                    <div class="min-w-full p-6">
-                        <h4 class="font-bold serif mb-2">Algorithms Specialization</h4>
-                        <p class="text-xs uppercase tracking-widest text-gray-400 mb-4">Coursera · Stanford University</p>
-                        <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/S3F0IMJM3JMY" target="_blank"
-                           class="text-xs font-bold uppercase underline decoration-gray-300 hover:decoration-black">
-                           View Certificate →
-                        </a>
-                    </div>
-
-                    <!-- Certificate 3 -->
-                    <div class="min-w-full p-6">
-                        <h4 class="font-bold serif mb-2">AI and Data Analytics for Business Leaders Professional Certificate</h4>
-                        <p class="text-xs uppercase tracking-widest text-gray-400 mb-4">Babson College</p>
-                        <a href="https://credentials.edx.org/credentials/46a897587e904d2e854d0971ade37a47/" target="_blank"
-                           class="text-xs font-bold uppercase underline decoration-gray-300 hover:decoration-black">
-                           View Certificate →
-                        </a>
-                    </div>
-
-        </div>
+    <div class="flex justify-between items-center mb-12">
+      <h2 class="text-4xl font-bold serif italic">Curriculum Vitae</h2>
+      <a href="#" class="text-[10px] font-bold uppercase border border-black px-4 py-2 hover:bg-black hover:text-white transition-all">
+        Download PDF
+      </a>
     </div>
 
-    <!-- Controls -->
-    <div class="flex justify-between mt-4 text-xs font-bold uppercase tracking-widest">
-        <button onclick="prevCert()" class="hover:text-[var(--accent)]">← Previous</button>
-        <button onclick="nextCert()" class="hover:text-[var(--accent)]">Next →</button>
+    <div class="section-label">Education</div>
+    <div class="cv-item">
+      <div class="text-sm font-mono text-gray-400">2025 — 2029</div>
+      <div>
+        <h4 class="font-bold">BSc in Computer Science and Engineering</h4>
+        <p class="text-sm text-gray-600">Leading University</p>
+      </div>
     </div>
-</div>
 
-    </template>
+    <!-- Certifications -->
+    <div class="section-label mt-20">Certifications</div>
+
+    <div class="relative max-w-xl">
+      <div id="cert-slider" class="overflow-hidden border border-[var(--border)] bg-white">
+        <div id="cert-track" class="flex transition-transform duration-500 ease-out">
+
+          <div class="min-w-full p-6">
+            <h4 class="font-bold serif mb-2">Machine Learning Specialization</h4>
+            <p class="text-xs uppercase tracking-widest text-gray-400 mb-4">
+              Coursera · Stanford University · DeepLearning.AI
+            </p>
+            <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/3QRIV8JSOJE5"
+               target="_blank"
+               class="text-xs font-bold uppercase underline">
+              View Certificate →
+            </a>
+          </div>
+
+          <div class="min-w-full p-6">
+            <h4 class="font-bold serif mb-2">Algorithms Specialization</h4>
+            <p class="text-xs uppercase tracking-widest text-gray-400 mb-4">
+              Coursera · Stanford University
+            </p>
+            <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/S3F0IMJM3JMY"
+               target="_blank"
+               class="text-xs font-bold uppercase underline">
+              View Certificate →
+            </a>
+          </div>
+        <div class="min-w-full p-6">
+            <h4 class="font-bold serif mb-2">AI and Data Analytics for Business Leaders Professional Certificate</h4>
+            <p class="text-xs uppercase tracking-widest text-gray-400 mb-4">
+              Edx · Babson College
+            </p>
+            <a href="https://credentials.edx.org/credentials/46a897587e904d2e854d0971ade37a47/"
+               target="_blank"
+               class="text-xs font-bold uppercase underline">
+              View Certificate →
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="flex justify-between mt-4 text-xs font-bold uppercase tracking-widest">
+        <button onclick="prevCert()">← Previous</button>
+        <button onclick="nextCert()">Next →</button>
+      </div>
+    </div>
+
+  </div>
+</template>
+
 
     <footer class="max-w-4xl mx-auto px-6 py-24 border-t border-[var(--border)] bg-white/30">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
@@ -518,80 +527,64 @@
     </footer>
 
     <script>
-        const viewport = document.getElementById('app-viewport');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
+  const viewport = document.getElementById('app-viewport');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
 
-        function navigateTo(pageId) {
-            viewport.innerHTML = '';
-            const template = document.getElementById(`tpl-${pageId}`);
-            if (template) {
-                const clone = template.content.cloneNode(true);
-                viewport.appendChild(clone);
-            }
-            
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-                if (link.classList.contains(`${pageId}-link`)) {
-                    link.classList.add('active');
-                }
-            });
-
-            window.scrollTo(0, 0);
-        }
-
-        function toggleMenu() {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('flex');
-        }
-
-        function openLightbox(src) {
-            lightboxImg.src = src;
-            lightbox.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-        }
-
-        function closeLightbox() {
-            lightbox.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling
-        }
-
-        document.getElementById('menu-btn').addEventListener('click', toggleMenu);
-
-        // Escape key to close lightbox
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeLightbox();
-        });
-
-        window.onload = () => {
-            navigateTo('home');
-        };
-        <script>
-    let certIndex = 0;
-
-    function updateCertSlider() {
-        const track = document.getElementById('cert-track');
-        if (!track) return;
-        track.style.transform = `translateX(-${certIndex * 100}%)`;
+  function navigateTo(pageId) {
+    viewport.innerHTML = '';
+    const template = document.getElementById(`tpl-${pageId}`);
+    if (template) {
+      viewport.appendChild(template.content.cloneNode(true));
     }
+    window.scrollTo(0, 0);
+  }
 
-    function nextCert() {
-        const total = document.querySelectorAll('#cert-track > div').length;
-        certIndex = (certIndex + 1) % total;
-        updateCertSlider();
-    }
+  function toggleMenu() {
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('flex');
+  }
 
-    function prevCert() {
-        const total = document.querySelectorAll('#cert-track > div').length;
-        certIndex = (certIndex - 1 + total) % total;
-        updateCertSlider();
-    }
+  function openLightbox(src) {
+    lightboxImg.src = src;
+    lightbox.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  let certIndex = 0;
+
+  function updateCertSlider() {
+    const track = document.getElementById('cert-track');
+    if (!track) return;
+    track.style.transform = `translateX(-${certIndex * 100}%)`;
+  }
+
+  function nextCert() {
+    const total = document.querySelectorAll('#cert-track > div').length;
+    certIndex = (certIndex + 1) % total;
+    updateCertSlider();
+  }
+
+  function prevCert() {
+    const total = document.querySelectorAll('#cert-track > div').length;
+    certIndex = (certIndex - 1 + total) % total;
+    updateCertSlider();
+  }
+
+  document.getElementById('menu-btn').addEventListener('click', toggleMenu);
+
+  window.onload = () => navigateTo('home');
 </script>
 
-    </script>
 </body>
 </html>
+
 
 
 
