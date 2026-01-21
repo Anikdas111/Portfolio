@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Churn Analysis</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="container">
+    <h4>Business Context</h4>
+<p>
+Customer churn is a critical problem for subscription-based businesses, as acquiring new customers is significantly more expensive than retaining existing ones. 
+This project simulates a real-world scenario where a company wants to understand <strong>why customers leave</strong> and identify <strong>early warning signals</strong> to improve retention strategies.
+</p>
+<h4>Business Questions</h4>
+<p>
+The analysis focused on answering the following key questions:
+</p>
+<ul class="list-disc ml-6 text-sm text-gray-600">
+  <li>Which customer segments have the highest churn rate?</li>
+  <li>Does customer tenure influence the likelihood of churn?</li>
+  <li>Are short-tenure customers more likely to leave?</li>
+  <li>Which behavioral or account-level factors are most associated with churn?</li>
+</ul>
+<h4>Dataset Overview</h4>
+<p>
+The dataset contains customer-level information including tenure, service usage, contract type, and churn status. 
+Data cleaning and preprocessing were performed using Microsoft Excel, followed by exploratory analysis to identify patterns and trends.
+</p>
+<h4>Methodology</h4>
+<p>
+The analysis followed a structured data analysis workflow:
+</p>
+<ul class="list-disc ml-6 text-sm text-gray-600">
+  <li>Data cleaning and validation</li>
+  <li>Exploratory data analysis using pivot tables</li>
+  <li>Segmentation based on tenure groups</li>
+  <li>Visualization of churn patterns using charts</li>
+</ul>
+<p>
+The goal was not model complexity, but interpretability and business relevance.
+</p>
+<h4>Key Insights</h4>
+<p>
+Several important patterns emerged from the analysis:
+</p>
+<ul class="list-disc ml-6 text-sm text-gray-600">
+  <li>Customers with <strong>1–12 months tenure showed the highest churn rate</strong>, indicating risk during early onboarding.</li>
+  <li>Churn probability decreased significantly after the first year, suggesting long-term customers are more stable.</li>
+  <li>A large proportion of churn occurred before customers fully adopted the service.</li>
+</ul>
+<h4>Visual Evidence</h4>
+    <p>
+The following charts illustrate churn distribution across tenure groups and clearly show that early-stage customers represent the highest retention risk.
+These visualizations were created using Excel pivot charts for clarity and accessibility.
+</p>
+    <h4>Business Recommendations</h4>
+<p>
+Based on the findings, the following actions are recommended:
+</p>
+<ul class="list-disc ml-6 text-sm text-gray-600">
+  <li>Implement stronger onboarding and support programs for customers in their first 12 months.</li>
+  <li>Monitor early engagement metrics to identify at-risk users.</li>
+  <li>Introduce targeted retention campaigns for new customers.</li>
+</ul>
+    <h4>Limitations & Next Steps</h4>
+<p>
+This analysis was limited to exploratory techniques and did not include predictive modeling.
+Future work could include building churn prediction models using logistic regression or tree-based methods, as well as validating findings with larger datasets.
+</p>
+
+  </main>
+
+</body>
+</html>
