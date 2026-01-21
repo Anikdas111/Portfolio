@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anik Das</title>
+    <title>Anik Das | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -33,6 +33,7 @@
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
         }
+
         .site-footer {
             margin-top: 4rem;
             padding: 2rem 1rem;
@@ -42,16 +43,6 @@
             border-top: 1px solid #e5e5e5;
         }
 
-        .site-footer p {
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-        .footer-name {
-            margin-top: 0.5rem;
-            font-style: italic;
-            color: #777;
-        }
         /* Page Transition Effect */
         .page-content {
             animation: fadeIn 0.4s ease-out;
@@ -80,9 +71,10 @@
             background-color: var(--border);
         }
 
+        /* Navigation Active State */
         .nav-link.active {
             color: var(--accent);
-            border-bottom: 2px solid var(--accent);
+            border-bottom: 1.5px solid var(--accent);
         }
 
         .cv-item {
@@ -148,13 +140,11 @@
 </head>
 <body>
 
-    <!-- Lightbox Modal -->
     <div id="lightbox" onclick="closeLightbox()">
         <img id="lightbox-img" src="" alt="Enlarged View">
-        <button class="absolute top-10 right-10 text-white text-4xl">&times;</button>
+        <button class="absolute top-10 right-10 text-white text-4xl hover:text-gray-300 transition-colors">&times;</button>
     </div>
 
-    <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 border-b border-[var(--border)] nav-blur">
         <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
             <a href="javascript:void(0)" onclick="navigateTo('home')" class="font-bold tracking-tighter text-2xl serif">AD.</a>
@@ -166,15 +156,14 @@
                 <a href="javascript:void(0)" onclick="navigateTo('cv')" class="nav-link cv-link hover:text-[var(--accent)] transition-all py-2">About</a>
             </div>
 
-            <button id="menu-btn" class="md:hidden p-2 text-gray-600 focus:outline-none">
+            <button id="menu-btn" class="md:hidden p-2 text-gray-600 focus:outline-none" aria-label="Toggle Menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 bg-[var(--bg)] hidden flex-col items-center justify-center space-y-8 text-2xl serif italic z-[60]">
-        <button onclick="toggleMenu()" class="absolute top-5 right-6 text-3xl">&times;</button>
+        <button onclick="toggleMenu()" class="absolute top-5 right-6 text-3xl" aria-label="Close Menu">&times;</button>
         <a href="javascript:void(0)" onclick="navigateTo('home'); toggleMenu()" class="hover:text-[var(--accent)]">Home</a>
         <a href="javascript:void(0)" onclick="navigateTo('projects'); toggleMenu()" class="hover:text-[var(--accent)]">Projects</a>
         <a href="javascript:void(0)" onclick="navigateTo('library'); toggleMenu()" class="hover:text-[var(--accent)]">Library</a>
@@ -182,10 +171,8 @@
     </div>
 
     <main id="app-viewport" class="max-w-4xl mx-auto px-6 pt-32 pb-24 min-h-[80vh]">
-        <!-- Content injected via JS -->
-    </main>
+        </main>
 
-    <!-- Template: Home -->
     <template id="tpl-home">
         <div class="page-content">
             <header class="mb-24">
@@ -213,7 +200,6 @@
                 </div>
             </header>
 
-            <!-- Toolkit Section -->
             <section class="mb-24">
                 <div class="section-label">Toolkit & Focus</div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -230,7 +216,6 @@
                 </div>
             </section>
 
-            <!-- Snapshot Section -->
             <section class="mb-24">
                 <div class="section-label">Snapshot</div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -247,14 +232,12 @@
         </div>
     </template>
 
-    <!-- Template: Projects -->
     <template id="tpl-projects">
         <div class="page-content">
             <h2 class="text-4xl font-bold serif italic mb-4 underline underline-offset-8 decoration-blue-100">Project Portfolio</h2>
             <p class="text-[var(--text-secondary)] mb-12 max-w-xl">A selection of my quantitative analysis work, ranging from academic papers to interactive dashboards.</p>
             
             <div class="space-y-16">
-                <!-- Project Item -->
                 <div class="flex flex-col sm:flex-row gap-8 items-start mb-12 pb-12 border-b border-[var(--border)]">
                     <div class="w-32 h-44 border border-[var(--border)] flex-shrink-0 overflow-hidden bg-gray-50">
                         <img src="https://raw.githubusercontent.com/Anikdas111/Portfolio/main/Picture2.png?raw=true" class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all cursor-zoom-in" alt="Churn Analysis" onclick="openLightbox(this.src)">
@@ -275,7 +258,6 @@
         </div>
     </template>
 
-    <!-- Template: Full Case Study -->
     <template id="tpl-churn-case-study">
         <div class="page-content">
             <button onclick="navigateTo('projects')" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-black mb-8 transition-colors flex items-center gap-2">
@@ -374,7 +356,6 @@
         </div>
     </template>
 
-    <!-- Template: Library -->
     <template id="tpl-library">
         <div class="page-content">
             <h2 class="text-4xl font-bold serif italic mb-4">The Library</h2>
@@ -382,7 +363,6 @@
 
             <div class="section-label">Selected Reading</div>
             <div class="flex flex-col sm:flex-row gap-8 items-start mb-16">
-                <!-- Book Cover Container - Removed the text overlay -->
                 <div class="w-32 h-44 border border-[var(--border)] flex-shrink-0 overflow-hidden bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg group relative cursor-zoom-in" onclick="openLightbox('https://raw.githubusercontent.com/Anikdas111/Portfolio/main/Gemini_Generated_Image_627iki627iki627i.png')">
                     <img src="https://raw.githubusercontent.com/Anikdas111/Portfolio/main/Gemini_Generated_Image_627iki627iki627i.png" alt="Emotional Intelligence" class="w-full h-full object-cover"/>
                     <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors"></div>
@@ -416,80 +396,76 @@
         </div>
     </template>
 
-    <!-- Template: CV -->
     <template id="tpl-cv">
-  <div class="page-content">
+        <div class="page-content">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-4xl font-bold serif italic">Curriculum Vitae</h2>
+                <a href="#" class="text-[10px] font-bold uppercase border border-black px-4 py-2 hover:bg-black hover:text-white transition-all">
+                    Download PDF
+                </a>
+            </div>
 
-    <div class="flex justify-between items-center mb-12">
-      <h2 class="text-4xl font-bold serif italic">Curriculum Vitae</h2>
-      <a href="#" class="text-[10px] font-bold uppercase border border-black px-4 py-2 hover:bg-black hover:text-white transition-all">
-        Download PDF
-      </a>
-    </div>
+            <div class="section-label">Education</div>
+            <div class="cv-item">
+                <div class="text-sm font-mono text-gray-400">2025 — 2029</div>
+                <div>
+                    <h4 class="font-bold">BSc in Computer Science and Engineering</h4>
+                    <p class="text-sm text-gray-600">Leading University</p>
+                </div>
+            </div>
 
-    <div class="section-label">Education</div>
-    <div class="cv-item">
-      <div class="text-sm font-mono text-gray-400">2025 — 2029</div>
-      <div>
-        <h4 class="font-bold">BSc in Computer Science and Engineering</h4>
-        <p class="text-sm text-gray-600">Leading University</p>
-      </div>
-    </div>
+            <div class="section-label mt-20">Certifications</div>
 
-    <!-- Certifications -->
-    <div class="section-label mt-20">Certifications</div>
+            <div class="relative max-w-xl">
+                <div id="cert-slider" class="overflow-hidden border border-[var(--border)] bg-white">
+                    <div id="cert-track" class="flex transition-transform duration-500 ease-out">
 
-    <div class="relative max-w-xl">
-      <div id="cert-slider" class="overflow-hidden border border-[var(--border)] bg-white">
-        <div id="cert-track" class="flex transition-transform duration-500 ease-out">
+                        <div class="min-w-full p-6">
+                            <h4 class="font-bold serif mb-2">Machine Learning Specialization</h4>
+                            <p class="text-xs uppercase tracking-widest text-gray-400 mb-4">
+                                Coursera · Stanford University · DeepLearning.AI
+                            </p>
+                            <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/3QRIV8JSOJE5"
+                               target="_blank"
+                               class="text-xs font-bold uppercase underline">
+                                View Certificate →
+                            </a>
+                        </div>
 
-          <div class="min-w-full p-6">
-            <h4 class="font-bold serif mb-2">Machine Learning Specialization</h4>
-            <p class="text-xs uppercase tracking-widest text-gray-400 mb-4">
-              Coursera · Stanford University · DeepLearning.AI
-            </p>
-            <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/3QRIV8JSOJE5"
-               target="_blank"
-               class="text-xs font-bold uppercase underline">
-              View Certificate →
-            </a>
-          </div>
+                        <div class="min-w-full p-6">
+                            <h4 class="font-bold serif mb-2">Algorithms Specialization</h4>
+                            <p class="text-xs uppercase tracking-widest text-gray-400 mb-4">
+                                Coursera · Stanford University
+                            </p>
+                            <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/S3F0IMJM3JMY"
+                               target="_blank"
+                               class="text-xs font-bold uppercase underline">
+                                View Certificate →
+                            </a>
+                        </div>
 
-          <div class="min-w-full p-6">
-            <h4 class="font-bold serif mb-2">Algorithms Specialization</h4>
-            <p class="text-xs uppercase tracking-widest text-gray-400 mb-4">
-              Coursera · Stanford University
-            </p>
-            <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/S3F0IMJM3JMY"
-               target="_blank"
-               class="text-xs font-bold uppercase underline">
-              View Certificate →
-            </a>
-          </div>
-        <div class="min-w-full p-6">
-            <h4 class="font-bold serif mb-2">AI and Data Analytics for Business Leaders Professional Certificate</h4>
-            <p class="text-xs uppercase tracking-widest text-gray-400 mb-4">
-              Edx · Babson College
-            </p>
-            <a href="https://credentials.edx.org/credentials/46a897587e904d2e854d0971ade37a47/"
-               target="_blank"
-               class="text-xs font-bold uppercase underline">
-              View Certificate →
-            </a>
-          </div>
+                        <div class="min-w-full p-6">
+                            <h4 class="font-bold serif mb-2">AI and Data Analytics for Business Leaders</h4>
+                            <p class="text-xs uppercase tracking-widest text-gray-400 mb-4">
+                                Edx · Babson College
+                            </p>
+                            <a href="https://credentials.edx.org/credentials/46a897587e904d2e854d0971ade37a47/"
+                               target="_blank"
+                               class="text-xs font-bold uppercase underline">
+                                View Certificate →
+                            </a>
+                        </div>
 
+                    </div>
+                </div>
+
+                <div class="flex justify-between mt-4 text-xs font-bold uppercase tracking-widest">
+                    <button onclick="prevCert()">← Previous</button>
+                    <button onclick="nextCert()">Next →</button>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="flex justify-between mt-4 text-xs font-bold uppercase tracking-widest">
-        <button onclick="prevCert()">← Previous</button>
-        <button onclick="nextCert()">Next →</button>
-      </div>
-    </div>
-
-  </div>
-</template>
-
+    </template>
 
     <footer class="max-w-4xl mx-auto px-6 py-24 border-t border-[var(--border)] bg-white/30">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
@@ -527,67 +503,84 @@
     </footer>
 
     <script>
-  const viewport = document.getElementById('app-viewport');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
+    const viewport = document.getElementById('app-viewport');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
 
-  function navigateTo(pageId) {
-    viewport.innerHTML = '';
-    const template = document.getElementById(`tpl-${pageId}`);
-    if (template) {
-      viewport.appendChild(template.content.cloneNode(true));
+    // Global variable for cert slider index
+    let certIndex = 0;
+
+    function navigateTo(pageId) {
+        viewport.innerHTML = '';
+        const template = document.getElementById(`tpl-${pageId}`);
+        if (template) {
+            viewport.appendChild(template.content.cloneNode(true));
+        }
+
+        // Handle Active State for Navigation
+        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+        
+        // Find links that point to this pageId and add active class
+        // Special case: 'churn-case-study' should highlight 'projects'
+        let activeId = pageId;
+        if(pageId === 'churn-case-study') activeId = 'projects';
+        
+        const activeLink = document.querySelector(`.nav-link.${activeId}-link`);
+        if (activeLink) activeLink.classList.add('active');
+
+        // Reset Slider if on CV page
+        if (pageId === 'cv') {
+            certIndex = 0;
+            updateCertSlider();
+        }
+
+        window.scrollTo(0, 0);
     }
-    window.scrollTo(0, 0);
-  }
 
-  function toggleMenu() {
-    mobileMenu.classList.toggle('hidden');
-    mobileMenu.classList.toggle('flex');
-  }
+    function toggleMenu() {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenu.classList.toggle('flex');
+    }
 
-  function openLightbox(src) {
-    lightboxImg.src = src;
-    lightbox.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  }
+    function openLightbox(src) {
+        lightboxImg.src = src;
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
 
-  function closeLightbox() {
-    lightbox.style.display = 'none';
-    document.body.style.overflow = 'auto';
-  }
+    function closeLightbox() {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
 
-  let certIndex = 0;
+    function updateCertSlider() {
+        const track = document.getElementById('cert-track');
+        if (!track) return;
+        track.style.transform = `translateX(-${certIndex * 100}%)`;
+    }
 
-  function updateCertSlider() {
-    const track = document.getElementById('cert-track');
-    if (!track) return;
-    track.style.transform = `translateX(-${certIndex * 100}%)`;
-  }
+    function nextCert() {
+        const track = document.getElementById('cert-track');
+        if(!track) return;
+        const total = track.children.length;
+        certIndex = (certIndex + 1) % total;
+        updateCertSlider();
+    }
 
-  function nextCert() {
-    const total = document.querySelectorAll('#cert-track > div').length;
-    certIndex = (certIndex + 1) % total;
-    updateCertSlider();
-  }
+    function prevCert() {
+        const track = document.getElementById('cert-track');
+        if(!track) return;
+        const total = track.children.length;
+        certIndex = (certIndex - 1 + total) % total;
+        updateCertSlider();
+    }
 
-  function prevCert() {
-    const total = document.querySelectorAll('#cert-track > div').length;
-    certIndex = (certIndex - 1 + total) % total;
-    updateCertSlider();
-  }
+    document.getElementById('menu-btn').addEventListener('click', toggleMenu);
 
-  document.getElementById('menu-btn').addEventListener('click', toggleMenu);
-
-  window.onload = () => navigateTo('home');
+    // Initial Load
+    window.onload = () => navigateTo('home');
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
