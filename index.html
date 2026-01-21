@@ -567,9 +567,32 @@
         window.onload = () => {
             navigateTo('home');
         };
+        <script>
+    let certIndex = 0;
+
+    function updateCertSlider() {
+        const track = document.getElementById('cert-track');
+        if (!track) return;
+        track.style.transform = `translateX(-${certIndex * 100}%)`;
+    }
+
+    function nextCert() {
+        const total = document.querySelectorAll('#cert-track > div').length;
+        certIndex = (certIndex + 1) % total;
+        updateCertSlider();
+    }
+
+    function prevCert() {
+        const total = document.querySelectorAll('#cert-track > div').length;
+        certIndex = (certIndex - 1 + total) % total;
+        updateCertSlider();
+    }
+</script>
+
     </script>
 </body>
 </html>
+
 
 
 
