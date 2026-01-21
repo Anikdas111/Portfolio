@@ -33,7 +33,25 @@
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
         }
+        .site-footer {
+            margin-top: 4rem;
+            padding: 2rem 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+            border-top: 1px solid #e5e5e5;
+        }
 
+        .site-footer p {
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .footer-name {
+            margin-top: 0.5rem;
+            font-style: italic;
+            color: #777;
+        }
         /* Page Transition Effect */
         .page-content {
             animation: fadeIn 0.4s ease-out;
@@ -498,5 +516,13 @@
             navigateTo('home');
         };
     </script>
+    <footer class="site-footer">
+  <p>
+    This website serves as both my professional portfolio and a record of my learning.
+  </p>
+  <p class="footer-name">— Anik Das</p>
+</footer>
+
 </body>
 </html>
+
